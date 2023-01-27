@@ -1,0 +1,9 @@
+<button
+  [class]="className"
+  [type]="type"
+  [disabled]="isDisable"
+  [style.color]="color"
+>
+  <app-icon *ngIf="icon" [icon]="icon" [fill]="color"></app-icon>
+  <span *ngIf="text">{{ text }}</span>
+</button>

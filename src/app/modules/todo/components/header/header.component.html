@@ -1,0 +1,27 @@
+<div class="header">
+  <h1 class="title">TODO APP</h1>
+  <form class="input" (submit)="onSubmit($event)" [formGroup]="todoGr">
+    <div class="input-todo-wrapper">
+      <app-text-field
+        [placeHolder]="'Enter Todo'"
+        [formGroup]="todoGr"
+        [formControlName]="'todoName'"
+      ></app-text-field>
+    </div>
+    <div class="deadline-wrapper">
+      <app-date-picker
+        [formGroup]="todoGr"
+        [formControlName]="'deadline'"
+      ></app-date-picker>
+    </div>
+    <div class="button-wrapper">
+      <app-button
+        [text]="'ADD'"
+        [size]="'full'"
+        [type]="'submit'"
+        [color]="'#fff'"
+        [isDisable]="todoGr.invalid"
+      ></app-button>
+    </div>
+  </form>
+</div>

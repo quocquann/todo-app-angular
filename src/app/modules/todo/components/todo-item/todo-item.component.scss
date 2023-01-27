@@ -1,0 +1,69 @@
+@import '../../../../../variable';
+
+.todo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-top: 1px solid $border-color-base;
+
+    .name-todo {
+        flex: 1;
+        position: relative;
+
+        &:hover .deadline {
+            display: block;
+        }
+
+        .todoname-content {
+            height: 100%;
+            padding: 10px 20px 10px 15px;
+            outline: 1px solid $border-color-base;
+            border-left: 5px solid transparent;
+            max-width: 420px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .todoname-content.reminder{
+            border-left: 5px solid $color-warning;
+        }
+
+        .todoname-content.completed{
+            color: $border-color-base;
+            text-decoration: line-through;
+        }
+
+
+        .deadline {
+            position: absolute;
+            z-index: 10;
+            font-style: italic;
+            top: 50%;
+            left: -60%;
+            transform: translateY(-50%);
+            background-color: $color-infor;
+            border-radius: 5px;
+            padding: 10px 20px;
+            display: none;
+            color:#fff;
+
+
+            &.edit{
+                padding:0;
+                display: block;
+            }
+        }
+    }
+
+    .action {
+        display: flex;
+        justify-content: space-between;
+        width: 100px;
+
+        .btn {
+            margin-left: 5px;
+        }
+    }
+}

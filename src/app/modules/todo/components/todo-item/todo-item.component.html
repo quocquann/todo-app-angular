@@ -1,0 +1,81 @@
+<div class="todo">
+  <div class="name-todo" [formGroup]="todoItemGr">
+    <p
+      *ngIf="!isEdit"
+      [class]="{
+        'todoname-content': true,
+        reminder: isReminder(),
+        completed: todo.isCompleted
+      }"
+      (click)="handleToggleState(todo)"
+    >
+      {{ todo.name }}
+    </p>
+    <div
+      [class]="{
+        deadline: true,
+        edit: isEdit
+      }"
+    >
+      <p *ngIf="!isEdit">
+        {{ todo.deadline | date: "medium" }}
+      </p>
+
+      <app-date-picker
+        *ngIf="isEdit"
+        [formGroup]="todoItemGr"
+        [formControlName]="'deadlineControl'"
+      ></app-date-picker>
+    </div>
+
+    <app-text-field
+      #texField
+      *ngIf="isEdit"
+      [formGroup]="todoItemGr"
+      [formControlName]="'todoControl'"
+    ></app-text-field>
+  </div>
+  <div class="action">
+    <div class="btn">
+      <app-button
+        *ngIf="!isEdit; else save"
+        [size]="'medium'"
+        [round]="true"
+        (click)="onEdit()"
+        [icon]="'edit-icon'"
+        [color]="'#fff'"
+      ></app-button>
+
+      <ng-template #save>
+        <app-button
+          [size]="'medium'"
+          [round]="true"
+          [color]="'#fff'"
+          [icon]="'check-icon'"
+          (click)="handleEditTodo(todo)"
+        ></app-button>
+      </ng-template>
+    </div>
+    <div class="btn">
+      <app-button
+        *ngIf="!isEdit; else cancel"
+        [size]="'medium'"
+        [round]="true"
+        [bgColor]="'danger'"
+        [color]="'#fff'"
+        (click)="handleDeleteTodo(todo)"
+        [icon]="'trash-icon'"
+      ></app-button>
+      <ng-template #cancel>
+        <app-button
+          [size]="'medium'"
+          [round]="true"
+          [bgColor]="'danger'"
+          [color]="'#fff'"
+          [icon]="'cancel-icon'"
+          (click)="cancelEdit()"
+        ></app-button>
+      </ng-template>
+    </div>
+  </div>
+</div>

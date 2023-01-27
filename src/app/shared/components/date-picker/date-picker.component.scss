@@ -1,0 +1,12 @@
+@import '../../../../variable';
+
+.date-picker {
+    border: 1px solid $border-color-base;
+    outline: none;
+    width: 100%;
+    padding:10px 20px
+}
+
+.date-picker:focus {
+    outline: 1px solid $color-primary;
+}
